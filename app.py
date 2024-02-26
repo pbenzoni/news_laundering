@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Load the GeoLite2 database
 # Update the path to your GeoLite2 database
-reader = geoip2.database.Reader('D:\\repo\\GeoLite2-City.mmdb')
+reader = geoip2.database.Reader('./GeoLite2-City.mmdb')
 
 # Mapping of state abbreviations to capital cities
 state_capitals = {
@@ -75,6 +75,8 @@ def home():
         capital = state_capitals.get(state, "Unknown")
     except Exception as e:
         capital = "Washington"
+        state_name = "Washington, D.C."
+
 
     newspaper_brand = f"{capital} "
     logo_letters = capital[0] + 'T'
